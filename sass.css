@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: hsl(200deg, 15%, 8%);
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  overflow-x: hidden;
+  background-color: hsl(0deg, 0%, 98%);
+  color: hsl(200deg, 15%, 8%);
+  transition: background-color 0.4s ease-in;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px 6%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in;
+}
+nav h1 {
+  font-weight: 800;
+}
+nav .mode {
+  cursor: pointer;
+}
+nav span {
+  font-weight: 600;
+}
+
+.search {
+  padding: 3% 6%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease-in;
+}
+.search input {
+  background-image: url("images/magnifying-glass.png");
+  background-repeat: no-repeat;
+  background-position-x: 25px;
+  background-position-y: center;
+  background-size: 20px;
+  padding: 20px 60px;
+  width: 150%;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  color: hsl(0deg, 0%, 52%);
+  transition: background-color 0.3s ease-in;
+}
+.search .lightmode::-moz-placeholder {
+  color: black;
+}
+.search .lightmode:-ms-input-placeholder {
+  color: black;
+}
+.search .lightmode::placeholder {
+  color: black;
+}
+.search .darkmode::-moz-placeholder {
+  color: white;
+}
+.search .darkmode:-ms-input-placeholder {
+  color: white;
+}
+.search .darkmode::placeholder {
+  color: white;
+}
+.search #country-filter {
+  padding: 15px 10px;
+  padding-right: 50px;
+  background-color: white;
+  border: 0;
+  border-radius: 10px;
+  color: hsl(0deg, 0%, 52%);
+  transition: background-color 0.3s ease-in;
+}
+.search #country-filter option {
+  color: hsl(0deg, 0%, 52%);
+  padding: 50px;
+}
+
+@media only screen and (max-width: 900px) {
+  .search {
+    padding: 3% 6%;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .search input {
+    width: 100%;
+  }
+  .search #country-filter {
+    width: 100%;
+  }
+}
+.country {
+  padding: 3% 6%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 70px 40px;
+}
+.country .country-box {
+  padding: 0 0 20px;
+  border-radius: 10px;
+  background-color: white;
+  transition: background-color 0.3s ease-in;
+  height: 380px;
+  max-width: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+.country .country-box img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.country .country-box .info {
+  padding: 20px;
+  width: 100%;
+}
+.country .country-box .info span:nth-child(1) {
+  font-weight: 600;
+}
+.country .country-box .info span:nth-child(1):after {
+  content: ":";
+  margin: 2px;
+}
+.country .country-box .info span:nth-child(2) {
+  margin-left: 2px;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 900px) {
+  .country {
+    grid-template-columns: auto;
+  }
+  .country .country-box {
+    width: 100%;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  nav {
+    padding: 20px 3%;
+  }
+  nav h1 {
+    font-size: 1rem;
+    transform: translateY(2px);
+  }
+}
+.country.active {
+  width: 100%;
+  padding: 0;
+  display: block;
+}
+.country.active .country-detail {
+  padding: 5% 6%;
+  width: 100%;
+  display: grid;
+  text-align: center;
+  grid-template-columns: auto auto;
+}
+.country.active .country-detail h2 {
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.country.active .country-detail .first {
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+.country.active .country-detail .first a {
+  position: relative;
+  cursor: pointer;
+  border: 0;
+  bottom: 30px;
+  padding: 10px 30px;
+  box-shadow: 2px 2px 5px hsla(0deg, 0%, 52%, 0.5);
+  background-color: white;
+}
+.country.active .country-detail .first a i {
+  border-radius: 5px;
+}
+.country.active .country-detail .second {
+  width: 100%;
+  padding: 50px 80px;
+  text-align: left;
+}
+.country.active .country-detail .second ul {
+  display: inline;
+  padding: 0;
+}
+.country.active .country-detail .second ul:last-child {
+  margin: 10px 0;
+}
+.country.active .country-detail .second li {
+  list-style: none;
+  margin: 5px 0;
+}
+.country.active .country-detail .second li span:nth-child(1) {
+  font-weight: 600;
+}
+.country.active .country-detail .second .content {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 80px;
+  margin-bottom: 50px;
+}
+.country.active .country-detail .second .borderDiv span {
+  font-weight: 600;
+}
+.country.active .country-detail .second .borderDiv ul {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 5px;
+}
+.country.active .country-detail .second .borderDiv ul li {
+  display: inline;
+  padding: 2px 40px;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px hsla(0deg, 0%, 52%, 0.5);
+}
+.country.active .country-detail img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+@media only screen and (max-width: 850px) {
+  .country.active .country-detail {
+    grid-template-columns: auto;
+  }
+  .country.active .country-detail .first {
+    padding: 0;
+  }
+  .country.active .country-detail .first a {
+    position: relative;
+    top: 20px;
+  }
+  .country.active .country-detail .first img {
+    margin: 70px 0;
+  }
+  .country.active .country-detail .second {
+    padding: 0;
+  }
+  .country.active .country-detail .second .content {
+    grid-template-columns: auto;
+    margin-bottom: 0;
+    grid-gap: 20px;
+  }
+  .country.active .country-detail .second .borderDiv {
+    margin-top: 20px;
+  }
+  .country.active .country-detail .second .borderDiv span {
+    display: block;
+    margin-bottom: 10px;
+  }
+}/*# sourceMappingURL=sass.css.map */

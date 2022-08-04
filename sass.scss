@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+
+//VARIABLES
+
+$DModeEl: hsl(209, 23%, 22%);
+$DModeBg: hsl(207, 26%, 17%);
+$LModeText: hsl(200, 15%, 8%);
+$LModeInput: hsl(0, 0%, 52%);
+$LModeBg: hsl(0, 0%, 98%);
+$Elements: hsl(0, 0%, 100%);
+
+//GENERAL ELEMENTS
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $LModeText;
+}
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+@mixin box-shadow() {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  overflow-x: hidden;
+  background-color: $LModeBg;
+  color: $LModeText;
+  transition: background-color 0.4s ease-in;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffff;
+  padding: 20px 6%;
+  @include box-shadow();
+  transition: background-color 0.3s ease-in;
+
+  h1 {
+    font-weight: 800;
+  }
+  .mode {
+    cursor: pointer;
+  }
+  span {
+    font-weight: 600;
+  }
+}
+
+//SEARCH BY INPUT OR SELECTION
+
+.search {
+  padding: 3% 6%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease-in;
+
+  input {
+    background-image: url("images/magnifying-glass.png");
+    background-repeat: no-repeat;
+    background-position-x: 25px;
+    background-position-y: center;
+    background-size: 20px;
+    padding: 20px 60px;
+    width: 150%;
+    border: 0;
+    border-radius: 10px;
+    @include box-shadow();
+    color: $LModeInput;
+    transition: background-color 0.3s ease-in;
+  }
+
+  .lightmode::placeholder {
+    color: black;
+  }
+  .darkmode::placeholder {
+    color: white;
+  }
+
+  #country-filter {
+    padding: 15px 10px;
+    padding-right: 50px;
+    background-color: #ffff;
+    border: 0;
+    border-radius: 10px;
+    color: $LModeInput;
+    transition: background-color 0.3s ease-in;
+
+    option {
+      color: $LModeInput;
+      padding: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .search {
+    padding: 3% 6%;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+    margin-bottom: 30px;
+
+    input {
+      width: 100%;
+    }
+
+    #country-filter {
+      width: 100%;
+    }
+  }
+}
+
+//DIV BOXES DISPLAYING COUNTRY INFORMATION
+.country {
+  padding: 3% 6%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 70px 40px;
+
+  .country-box {
+    padding: 0 0 20px;
+    border-radius: 10px;
+    background-color: #ffff;
+    transition: background-color 0.3s ease-in;
+    height: 380px;
+    max-width: 300px;
+    object-fit: contain;
+    cursor: pointer;
+    @include box-shadow();
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    .info {
+      padding: 20px;
+      width: 100%;
+      span:nth-child(1) {
+        font-weight: 600;
+      }
+      span:nth-child(1):after {
+        content: ":";
+        margin: 2px;
+      }
+      span:nth-child(2) {
+        margin-left: 2px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .country {
+    grid-template-columns: auto;
+    .country-box {
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  nav {
+    padding: 20px 3%;
+    h1 {
+      font-size: 1rem;
+      transform: translateY(2px);
+    }
+  }
+}
+
+//COUNTRY DETAIL PAGE
+.country.active {
+  width: 100%;
+  padding: 0;
+  display: block;
+  .country-detail {
+    padding: 5% 6%;
+    width: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: auto auto;
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    .first {
+      width: 100%;
+      // padding: 50px 0;
+      text-align: left;
+      position: relative;
+      a {
+        position: relative;
+        cursor: pointer;
+        border: 0;
+        bottom: 30px;
+
+        i {
+          border-radius: 5px;
+        }
+        padding: 10px 30px;
+        box-shadow: 2px 2px 5px hsla(0, 0%, 52%, 0.5);
+        background-color: #ffff;
+      }
+    }
+
+    .second {
+      width: 100%;
+      padding: 50px 80px;
+      text-align: left;
+
+      ul {
+        display: inline;
+        padding: 0;
+        &:last-child {
+          margin: 10px 0;
+        }
+      }
+      li {
+        list-style: none;
+        margin: 5px 0;
+        span:nth-child(1) {
+          font-weight: 600;
+        }
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 80px;
+        margin-bottom: 50px;
+      }
+      .borderDiv {
+        span {
+          font-weight: 600;
+        }
+        ul {
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          gap: 5px;
+          li {
+            display: inline;
+            padding: 2px 40px;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-shadow: 2px 2px 5px hsla(0, 0%, 52%, 0.5);
+          }
+        }
+      }
+    }
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .country.active {
+    .country-detail {
+      grid-template-columns: auto;
+      .first {
+        padding: 0;
+        a {
+          position: relative;
+          top: 20px;
+        }
+        img {
+          margin: 70px 0;
+        }
+      }
+      .second {
+        padding: 0;
+
+        .content {
+          grid-template-columns: auto;
+          margin-bottom: 0;
+          grid-gap: 20px;
+        }
+        .borderDiv {
+          margin-top: 20px;
+          span {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

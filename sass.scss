@@ -43,6 +43,8 @@ nav {
   background-color: #ffff;
   padding: 20px 6%;
   @include box-shadow();
+  position: relative;
+  z-index: 1;
   transition: background-color 0.3s ease-in;
 
   h1 {
@@ -57,7 +59,7 @@ nav {
 }
 
 //SEARCH BY INPUT OR SELECTION
- 
+
 .search {
   padding: 3% 6%;
   display: flex;

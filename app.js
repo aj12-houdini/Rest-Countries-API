@@ -191,6 +191,7 @@ function getName(common) {
 function getFlag(png) {
   const img = document.createElement("img");
   img.setAttribute("src", png);
+  img.setAttribute("alt", "Country Flag")
   return img;
 }
 
